@@ -35,15 +35,16 @@ headers.forEach((header) => {
         return aSalary - bSalary;
       });
     } else {
-      return;
+      sortedRows = [...rows].sort((a, b) => {
+        const aHeader = a.cells[indexHeader].textContent.trim();
+        const bHeader = b.cells[indexHeader].textContent.trim();
+
+        return aHeader.localeCompare(bHeader);
+      });
     }
 
     const tbody = document.querySelector('table tbody');
 
-    tbody.innerHTML = '';
-
-    sortedRows.forEach((row) => {
-      tbody.append(row);
-    });
+    tbody.replaceChildren(...sortedRows);
   });
 });
