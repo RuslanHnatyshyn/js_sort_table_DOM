@@ -20,8 +20,8 @@ headers.forEach((header) => {
 
     if (header.textContent === 'Age') {
       sortedRows = [...rows].sort((a, b) => {
-        const aAge = Number(a.cells[2].textContent);
-        const bAge = Number(b.cells[2].textContent);
+        const aAge = Number(a.cells[indexHeader].textContent);
+        const bAge = Number(b.cells[indexHeader].textContent);
 
         return aAge - bAge;
       });
@@ -30,10 +30,10 @@ headers.forEach((header) => {
     if (header.textContent === 'Salary') {
       sortedRows = [...rows].sort((a, b) => {
         const aSalary = Number(
-          a.cells[3].textContent.replace(/[^0-9.-]+/g, ''),
+          a.cells[indexHeader].textContent.replace(/[^0-9.-]+/g, ''),
         );
         const bSalary = Number(
-          b.cells[3].textContent.replace(/[^0-9.-]+/g, ''),
+          b.cells[indexHeader].textContent.replace(/[^0-9.-]+/g, ''),
         );
 
         return aSalary - bSalary;
