@@ -16,18 +16,14 @@ headers.forEach((header) => {
           .trim()
           .localeCompare(b.children[indexHeader].textContent.trim());
       });
-    }
-
-    if (header.textContent === 'Age') {
+    } else if (header.textContent === 'Age') {
       sortedRows = [...rows].sort((a, b) => {
         const aAge = Number(a.cells[indexHeader].textContent);
         const bAge = Number(b.cells[indexHeader].textContent);
 
         return aAge - bAge;
       });
-    }
-
-    if (header.textContent === 'Salary') {
+    } else if (header.textContent === 'Salary') {
       sortedRows = [...rows].sort((a, b) => {
         const aSalary = Number(
           a.cells[indexHeader].textContent.replace(/[^0-9.-]+/g, ''),
@@ -38,6 +34,8 @@ headers.forEach((header) => {
 
         return aSalary - bSalary;
       });
+    } else {
+      return;
     }
 
     const tbody = document.querySelector('table tbody');
